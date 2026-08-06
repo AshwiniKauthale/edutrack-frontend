@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/batches`
 
-export const getBatches = () => axios.get(API);
+export const getBatches = () => axios.get(API_URL);
 
 export const getBatchById = (id) =>
   axios.get(`${API}/id/${id}`);
