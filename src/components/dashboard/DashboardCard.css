@@ -1,0 +1,15 @@
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 8px rgba(0,0,0,.1);
+}
+
+.card h3{
+    color:#666;
+}
+
+.card h1{
+    color:#2563eb;
+    margin-top:10px;
+}
