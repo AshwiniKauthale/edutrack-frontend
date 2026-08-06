@@ -1,6 +1,6 @@
 import axios from "axios";
 
-`${import.meta.env.VITE_API_URL}/profile`
+const API_URL = `${import.meta.env.VITE_API_URL}/profile`
 
 // Get All Profiles
 export const getProfiles = () => axios.get(API_URL);

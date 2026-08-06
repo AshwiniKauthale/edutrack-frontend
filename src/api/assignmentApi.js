@@ -1,6 +1,6 @@
 import axios from "axios";
 
-`${import.meta.env.VITE_API_URL}/assignments`
+const API_URL = `${import.meta.env.VITE_API_URL}/assignments`
 
 export const getAssignments = () => axios.get(API_URL);
 

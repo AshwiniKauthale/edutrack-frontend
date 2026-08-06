@@ -1,6 +1,6 @@
 import axios from "axios";
 
-`${import.meta.env.VITE_API_URL}/teachers`
+const API_URL = `${import.meta.env.VITE_API_URL}/teachers`
 
 export const getTeachers = () => axios.get(API_URL);
 

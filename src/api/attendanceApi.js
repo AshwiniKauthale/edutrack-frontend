@@ -1,6 +1,6 @@
 import axios from "axios";
 
-`${import.meta.env.VITE_API_URL}/attendance`
+const API_URL = `${import.meta.env.VITE_API_URL}/attendance`
 
 // =========================
 // Get All Attendance
