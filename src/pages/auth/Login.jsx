@@ -182,9 +182,9 @@ export default function Login() {
             <strong>Demo Credentials</strong>
           </p>
 
-          <p>Username : Ashwini</p>
+          <p>Username : admin</p>
 
-          <p>Password : Ashwini123</p>
+          <p>Password : admin123</p>
         </div>
       </form>
     </div>
