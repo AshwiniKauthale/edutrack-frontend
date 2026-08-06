@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/dashboard";
+`${import.meta.env.VITE_API_URL}/dashboard`
 
 // Dashboard Statistics
 export const getDashboardStats = () => {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:8080/batches";
+`${import.meta.env.VITE_API_URL}/batches`
 
 export const getBatches = () => axios.get(API);
 
