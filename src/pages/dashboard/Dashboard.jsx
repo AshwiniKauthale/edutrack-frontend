@@ -1,62 +1,200 @@
-import { useEffect, useState } from "react";
-
 import MainLayout from "../../layouts/MainLayout";
-import StatsGrid from "../../components/dashboard/StatsGrid";
-import RecentActivity from "../../components/dashboard/RecentActivity";
-import DashboardCharts from "../../components/dashboard/DashboardCharts";
+import { useNavigate } from "react-router-dom";
+import { getFullName } from "../../utils/Auth";
 
-import { getDashboardStats } from "../../api/dashboardApi";
+import "./Dashboard.css";
+
+import {
+    FaUserGraduate,
+    FaChalkboardTeacher,
+    FaLayerGroup,
+    FaSchool,
+    FaClipboardCheck,
+    FaBook,
+    FaUserPlus,
+    FaChalkboard,
+    FaPlus,
+} from "react-icons/fa";
+
+const dashboardItems = [
+    {
+        title: "Students",
+        icon: <FaUserGraduate />,
+        path: "/students",
+        color: "blue",
+    },
+    {
+        title: "Teachers",
+        icon: <FaChalkboardTeacher />,
+        path: "/teachers",
+        color: "teal",
+    },
+    {
+        title: "Batches",
+        icon: <FaLayerGroup />,
+        path: "/batches",
+        color: "blue",
+    },
+    {
+        title: "Classrooms",
+        icon: <FaSchool />,
+        path: "/classrooms",
+        color: "teal",
+    },
+    {
+        title: "Attendance",
+        icon: <FaClipboardCheck />,
+        path: "/attendance",
+        color: "blue",
+    },
+    {
+        title: "Assignments",
+        icon: <FaBook />,
+        path: "/assignments",
+        color: "teal",
+    },
+];
+
+const quickActions = [
+    {
+        title: "Add Student",
+        icon: <FaUserPlus />,
+        path: "/students/add",
+    },
+    {
+        title: "Add Teacher",
+        icon: <FaChalkboard />,
+        path: "/teachers/add",
+    },
+    {
+        title: "Add Batch",
+        icon: <FaPlus />,
+        path: "/batches/add",
+    },
+    {
+        title: "Add Classroom",
+        icon: <FaPlus />,
+        path: "/classrooms/add",
+    },
+];
 
 export default function Dashboard() {
-  const [stats, setStats] = useState({
-    students: 0,
-    teachers: 0,
-    batches: 0,
-    classrooms: 0,
-    attendance: 0,
-    assignments: 0,
-  });
 
-  const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    loadDashboard();
-  }, []);
+    const fullName = getFullName() || "User";
 
-  const loadDashboard = async () => {
-    try {
-      const response = await getDashboardStats();
-      setStats(response.data);
-    } catch (error) {
-      console.log(error);
-      alert("Unable to load dashboard.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    return (
+        <MainLayout>
 
-  return (
-    <MainLayout>
-      <h1
-        style={{
-          marginBottom: "25px",
-        }}
-      >
-        Dashboard
-      </h1>
+            <div className="dashboard-page">
 
-      {loading ? (
-        <h2>Loading Dashboard...</h2>
-      ) : (
-        <>
-          <StatsGrid stats={stats} />
+                {/* ================= HEADER ================= */}
 
-          <div style={{ marginTop: "40px" }}>
-            <RecentActivity />
-            <DashboardCharts />
-          </div>
-        </>
-      )}
-    </MainLayout>
-  );
+                <div className="dashboard-header">
+
+                    <div>
+                        <h1>EduTrack</h1>
+
+                        <p>
+                            Classroom & Student Management Portal
+                        </p>
+                    </div>
+
+                </div>
+
+
+                {/* ================= MAIN DASHBOARD ================= */}
+
+                <div className="dashboard-grid">
+
+                    {dashboardItems.map((item) => (
+
+                        <button
+                            key={item.path}
+                            className={`dashboard-card ${item.color}`}
+                            onClick={() => navigate(item.path)}
+                        >
+
+                            <div className="dashboard-card-icon">
+                                {item.icon}
+                            </div>
+
+                            <span className="dashboard-card-title">
+                                {item.title}
+                            </span>
+
+                            <span className="dashboard-card-arrow">
+                                →
+                            </span>
+
+                        </button>
+
+                    ))}
+
+                </div>
+
+
+                {/* ================= QUICK ACTIONS ================= */}
+
+                <div className="quick-actions">
+
+                    <div className="quick-actions-header">
+                        <h2>Quick Actions</h2>
+
+                        <span>
+                            Frequently used
+                        </span>
+                    </div>
+
+
+                    <div className="quick-actions-grid">
+
+                        {quickActions.map((action) => (
+
+                            <button
+                                key={action.path}
+                                className="quick-action-button"
+                                onClick={() => navigate(action.path)}
+                            >
+
+                                <span className="quick-action-icon">
+                                    {action.icon}
+                                </span>
+
+                                <span>
+                                    {action.title}
+                                </span>
+
+                                <span className="quick-action-arrow">
+                                    →
+                                </span>
+
+                            </button>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+
+                {/* ================= FOOTER ================= */}
+
+                <div className="dashboard-footer">
+
+                    <span>
+                        Logged in as
+                    </span>
+
+                    <strong>
+                        {fullName}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </MainLayout>
+    );
 }

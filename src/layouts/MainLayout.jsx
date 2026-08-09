@@ -1,28 +1,62 @@
+import { useState } from "react";
+
 import Sidebar from "../components/layout/Sidebar";
 import Navbar from "../components/layout/Navbar";
 
 export default function MainLayout({ children }) {
-  return (
-    <>
-      <Sidebar />
 
-      <div
-        style={{
-          marginLeft: "250px",
-          minHeight: "100vh",
-          backgroundColor: "#f3f4f6",
-        }}
-      >
-        <Navbar />
+    const [sidebarOpen, setSidebarOpen] =
+        useState(false);
 
-        <main
-          style={{
-            padding: "30px",
-          }}
-        >
-          {children}
-        </main>
-      </div>
-    </>
-  );
+
+    const toggleSidebar = () => {
+
+        setSidebarOpen(
+            previous => !previous
+        );
+
+    };
+
+
+    const closeSidebar = () => {
+
+        setSidebarOpen(false);
+
+    };
+
+
+    return (
+
+        <div className="app-container">
+
+            {/* ================= NAVBAR ================= */}
+
+            <Navbar
+                onMenuClick={toggleSidebar}
+            />
+
+
+            {/* ================= SIDEBAR ================= */}
+
+            <Sidebar
+                open={sidebarOpen}
+                onClose={closeSidebar}
+            />
+
+
+            {/* ================= MAIN CONTENT ================= */}
+
+            <main className="main-content">
+
+                <div className="page-content">
+
+                    {children}
+
+                </div>
+
+            </main>
+
+        </div>
+
+    );
 }
