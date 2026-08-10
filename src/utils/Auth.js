@@ -1,142 +1,187 @@
 import axios from "axios";
 
-const API = import.meta.env.VITE_API_URL;
+// =====================================================
+// Backend API URL
+// =====================================================
 
-/**
- * Login user
- *
- * Can login using:
- * - Username
- * - Email
- */
+const API_URL = import.meta.env.VITE_API_URL;
+
+
+// =====================================================
+// LOGIN
+// =====================================================
+
 export const login = async (usernameOrEmail, password) => {
 
-    const response = await axios.post(
-        `${API_URL}/login`,
-        {
-            usernameOrEmail: usernameOrEmail,
-            password: password
+    try {
+
+        const response = await axios.post(
+            `${API_URL}/api/auth/login`,
+            {
+                usernameOrEmail: usernameOrEmail,
+                password: password,
+            }
+        );
+
+        const data = response.data;
+
+        console.log("Login API response:", data);
+
+
+        // =================================================
+        // Save login information
+        // =================================================
+
+        localStorage.setItem("isLoggedIn", "true");
+
+        localStorage.setItem(
+            "username",
+            data.username || ""
+        );
+
+        localStorage.setItem(
+            "fullName",
+            data.fullName || ""
+        );
+
+        localStorage.setItem(
+            "email",
+            data.email || ""
+        );
+
+        localStorage.setItem(
+            "role",
+            data.role || "USER"
+        );
+
+
+        // =================================================
+        // Save JWT token if backend returns one
+        // =================================================
+
+        if (data.token) {
+
+            localStorage.setItem(
+                "token",
+                data.token
+            );
+
         }
-    );
 
-    const user = response.data;
 
-    // Store login information
-    localStorage.setItem("isLoggedIn", "true");
+        return data;
 
-    localStorage.setItem(
-        "username",
-        user.username
-    );
+    } catch (error) {
 
-    localStorage.setItem(
-        "fullName",
-        user.fullName
-    );
+        console.error(
+            "Login API error:",
+            error
+        );
 
-    localStorage.setItem(
-        "email",
-        user.email
-    );
+        // Important:
+        // Throw the original Axios error so Login.jsx
+        // can display the backend error message.
 
-    localStorage.setItem(
-        "role",
-        user.role
-    );
-
-    return user;
+        throw error;
+    }
 };
 
 
-/**
- * Logout
- */
+// =====================================================
+// LOGOUT
+// =====================================================
+
 export const logout = () => {
 
     localStorage.removeItem("isLoggedIn");
+
     localStorage.removeItem("username");
+
     localStorage.removeItem("fullName");
+
     localStorage.removeItem("email");
+
     localStorage.removeItem("role");
 
+    localStorage.removeItem("token");
 };
 
 
-/**
- * Check whether user is logged in
- */
+// =====================================================
+// CHECK AUTHENTICATION
+// =====================================================
+
 export const isAuthenticated = () => {
 
-    return localStorage.getItem("isLoggedIn") === "true";
-
+    return (
+        localStorage.getItem("isLoggedIn") === "true"
+    );
 };
 
 
-/**
- * Get username
- */
+// =====================================================
+// GET USERNAME
+// =====================================================
+
 export const getUsername = () => {
 
-    return localStorage.getItem("username");
-
+    return localStorage.getItem("username") || "";
 };
 
 
-/**
- * Get full name
- */
+// =====================================================
+// GET FULL NAME
+// =====================================================
+
 export const getFullName = () => {
 
-    return localStorage.getItem("fullName");
-
+    return localStorage.getItem("fullName") || "";
 };
 
 
-/**
- * Get email
- */
+// =====================================================
+// GET EMAIL
+// =====================================================
+
 export const getEmail = () => {
 
-    return localStorage.getItem("email");
-
+    return localStorage.getItem("email") || "";
 };
 
 
-/**
- * Get role
- */
+// =====================================================
+// GET ROLE
+// =====================================================
+
 export const getRole = () => {
 
-    return localStorage.getItem("role");
-
+    return localStorage.getItem("role") || "USER";
 };
 
 
-/**
- * Check USER
- */
-export const isUser = () => {
+// =====================================================
+// GET JWT TOKEN
+// =====================================================
 
-    return getRole() === "USER";
+export const getToken = () => {
 
+    return localStorage.getItem("token") || "";
 };
 
 
-/**
- * Check ADMIN
- */
-export const isAdmin = () => {
+// =====================================================
+// GET AUTHORIZATION HEADER
+// =====================================================
 
-    return getRole() === "ADMIN";
+export const getAuthHeader = () => {
 
-};
+    const token = getToken();
 
+    if (!token) {
+        return {};
+    }
 
-/**
- * Check SUPER ADMIN
- */
-export const isSuperAdmin = () => {
-
-    return getRole() === "SUPER_ADMIN";
-
+    return {
+        Authorization: `Bearer ${token}`,
+    };
 };
