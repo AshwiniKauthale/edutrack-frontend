@@ -79,7 +79,7 @@ import EditAssignment from "./pages/assignments/EditAssignment";
 // PROFILE
 // =====================================================
 
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 import ChangePassword from "./pages/Profile/ChangePassword";
 
