@@ -80,8 +80,8 @@ import EditAssignment from "./pages/assignments/EditAssignment";
 // =====================================================
 
 import Profile from "./pages/profile/Profile";
-import EditProfile from "./pages/Profile/EditProfile";
-import ChangePassword from "./pages/Profile/ChangePassword";
+import EditProfile from "./pages/profile/EditProfile";
+import ChangePassword from "./pages/profile/ChangePassword";
 
 // =====================================================
 // SETTINGS
@@ -92,15 +92,8 @@ import NotificationSettings from "./pages/Settings/NotificationSettings";
 import AppearanceSettings from "./pages/Settings/AppearanceSettings";
 import SecuritySettings from "./pages/Settings/SecuritySettings";
 import ActivityHistory from "./pages/Settings/ActivityHistory";
-
-
-
-
-import OrganizationSettings
-    from "./pages/Settings/OrganizationSettings";
-
-import AcademicSettings
-    from "./pages/Settings/AcademicSettings";
+import OrganizationSettings from "./pages/Settings/OrganizationSettings";
+import AcademicSettings from "./pages/Settings/AcademicSettings";
 
 // =====================================================
 // NOTIFICATIONS
@@ -108,6 +101,7 @@ import AcademicSettings
 
 import Notifications from "./pages/notifications/Notifications";
 import NotificationPage from "./pages/notifications/NotificationPage";
+
 // =====================================================
 // MANAGEMENT ROLES
 // =====================================================
@@ -122,9 +116,7 @@ const managementRoles = [
 // =====================================================
 
 function App() {
-
     return (
-
         <Routes>
 
             {/* =================================================
@@ -140,7 +132,6 @@ function App() {
                 path="/signup"
                 element={<Signup />}
             />
-
 
             {/* =================================================
                 PROTECTED APPLICATION
@@ -162,7 +153,6 @@ function App() {
                     path="/dashboard"
                     element={<Dashboard />}
                 />
-
 
                 {/* =================================================
                     STUDENT MANAGEMENT
@@ -200,7 +190,6 @@ function App() {
                         </RoleProtectedRoute>
                     }
                 />
-
 
                 {/* =================================================
                     TEACHER MANAGEMENT
@@ -260,7 +249,6 @@ function App() {
                     }
                 />
 
-
                 {/* =================================================
                     BATCH MANAGEMENT
                 ================================================= */}
@@ -310,7 +298,6 @@ function App() {
                         </RoleProtectedRoute>
                     }
                 />
-
 
                 {/* =================================================
                     CLASSROOM MANAGEMENT
@@ -369,7 +356,6 @@ function App() {
                         </RoleProtectedRoute>
                     }
                 />
-
 
                 {/* =================================================
                     ATTENDANCE MANAGEMENT
@@ -441,8 +427,6 @@ function App() {
                     }
                 />
 
-
-
                 {/* =================================================
                     ASSIGNMENT MANAGEMENT
                 ================================================= */}
@@ -491,7 +475,6 @@ function App() {
                     }
                 />
 
-
                 {/* =================================================
                     PROFILE
                 ================================================= */}
@@ -510,7 +493,6 @@ function App() {
                     path="/profile/change-password"
                     element={<ChangePassword />}
                 />
-
 
                 {/* =================================================
                     SETTINGS
@@ -551,7 +533,6 @@ function App() {
                     element={<AcademicSettings />}
                 />
 
-
                 {/* =================================================
                     NOTIFICATIONS
                 ================================================= */}
@@ -562,10 +543,9 @@ function App() {
                 />
 
                 <Route
-                    path="/notifications"
+                    path="/notifications/details"
                     element={<NotificationPage />}
                 />
-
 
                 {/* =================================================
                     DEFAULT ROUTES
