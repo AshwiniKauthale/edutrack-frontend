@@ -1,0 +1,419 @@
+/* =====================================================
+   TEACHER FORM PAGE
+===================================================== */
+
+.teacher-form-page {
+    min-height: calc(100vh - 80px);
+    padding: 30px;
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.teacher-form-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 20px;
+
+    padding: 8px 0;
+
+    border: none;
+    background: transparent;
+
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: #1d4ed8;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.teacher-form-card h1 {
+    margin: 0 0 8px;
+
+    color: #111827;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.teacher-form-card > p {
+    margin: 0 0 30px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.teacher-form-error {
+    margin-bottom: 24px;
+    padding: 13px 16px;
+
+    border: 1px solid #fecdca;
+    border-radius: 8px;
+
+    background: #fef3f2;
+    color: #b42318;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.teacher-form {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.teacher-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.teacher-form-group label {
+    color: #344054;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.teacher-form-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #101828;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.teacher-form-group input::placeholder {
+    color: #98a2b3;
+}
+
+
+.teacher-form-group input:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+.teacher-form-group input:disabled {
+    background: #f2f4f7;
+
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   BUTTON AREA
+===================================================== */
+
+.teacher-form-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 10px;
+    padding-top: 24px;
+
+    border-top: 1px solid #eaecf0;
+}
+
+
+/* =====================================================
+   CANCEL BUTTON
+===================================================== */
+
+.teacher-cancel-btn {
+    padding: 11px 20px;
+
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #344054;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.teacher-cancel-btn:hover {
+    background: #f9fafb;
+}
+
+
+.teacher-cancel-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.teacher-submit-btn {
+    padding: 11px 22px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.teacher-submit-btn:hover {
+    background: #1d4ed8;
+}
+
+
+.teacher-submit-btn:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.teacher-form-loading {
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+
+    border-radius: 50%;
+
+    animation: teacher-spin 0.8s linear infinite;
+}
+
+
+@keyframes teacher-spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   TEACHER DETAILS
+===================================================== */
+
+.teacher-details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+
+.teacher-details-grid > div {
+    padding: 18px;
+
+    border: 1px solid #eaecf0;
+    border-radius: 10px;
+
+    background: #f9fafb;
+}
+
+
+.teacher-details-grid span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #667085;
+
+    font-size: 13px;
+}
+
+
+.teacher-details-grid strong {
+    display: block;
+
+    color: #101828;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .teacher-form-page {
+        padding: 16px;
+    }
+
+
+    .teacher-form-card {
+        padding: 22px;
+    }
+
+
+    .teacher-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .teacher-form-actions {
+        grid-column: auto;
+
+        flex-direction: column-reverse;
+    }
+
+
+    .teacher-cancel-btn,
+    .teacher-submit-btn {
+        width: 100%;
+    }
+
+
+    .teacher-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .teacher-form-page {
+        padding: 10px;
+    }
+
+
+    .teacher-form-card {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+
+    .teacher-form-card h1 {
+        font-size: 24px;
+    }
+
+}

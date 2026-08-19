@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Roomies - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">⌂</span>
+            <span>Roomies</span>
+        </div>
+
+        <nav class="menu">
+
+            <a href="#" class="menu-item active">
+                <span>▦</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>₹</span>
+                <!--<span>Expenses</span>-->
+                <a href="Expense.html"></a>Expenses></a>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>✓</span>
+                <span>Tasks</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>▣</span>
+                <span>Events</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>▤</span>
+                <span>Rent & Bills</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>♧</span>
+                <span>Roommates</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="menu-item">
+                <span>⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <span>⇥</span>
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+        <!-- TOP HEADER -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu">
+                    ☰
+                </button>
+
+                <h1>Dashboard</h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="notification">
+                    ♧
+                    <span>3</span>
+                </div>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <span>Ashwini</span>
+
+                    <span class="arrow">
+                        ˅
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD CONTENT ================= -->
+
+        <div class="dashboard">
+
+
+            <!-- GREETING -->
+
+            <section class="greeting">
+
+                <h2>
+                    Good Evening, Ashwini! 👋
+                </h2>
+
+                <p>
+                    Here's what's happening in your home.
+                </p>
+
+            </section>
+
+
+            <!-- ================= SUMMARY CARDS ================= -->
+
+            <section class="summary-grid">
+
+
+                <!-- Total Expense -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon green">
+                        ₹
+                    </div>
+
+                    <div class="summary-content">
+
+                        <p>Total Expense</p>
+
+                        <h2>₹12,450</h2>
+
+                        <span class="green-text">
+                            This month
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Pending Expense -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon orange">
+                        ◷
+                    </div>
+
+                    <div class="summary-content">
+
+                        <p>My Pending Expense</p>
+
+                        <h2>₹2,850</h2>
+
+                        <span class="orange-text">
+                            To be paid
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Paid Expense -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon blue">
+                        ✓
+                    </div>
+
+                    <div class="summary-content">
+
+                        <p>My Paid Expense</p>
+
+                        <h2>₹4,500</h2>
+
+                        <span class="blue-text">
+                            This month
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Upcoming Tasks -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon purple">
+                        ☑
+                    </div>
+
+                    <div class="summary-content">
+
+                        <p>Upcoming Tasks</p>
+
+                        <h2>4</h2>
+
+                        <span class="purple-text">
+                            Tasks remaining
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Upcoming Events -->
+
+                <div class="summary-card">
+
+                    <div class="summary-icon pink">
+                        ▣
+                    </div>
+
+                    <div class="summary-content">
+
+                        <p>Upcoming Events</p>
+
+                        <h2>3</h2>
+
+                        <span class="pink-text">
+                            Events this month
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= MIDDLE SECTION ================= -->
+
+            <section class="middle-grid">
+
+
+                <!-- ================= RECENT EXPENSES ================= -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Recent Expenses</h3>
+                        </div>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <!-- Expense 1 -->
+
+                    <div class="expense-item">
+
+                        <div class="item-icon green-light">
+                            🛒
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Groceries
+                            </strong>
+
+                            <p>
+                                Paid by Ashwini • Today
+                            </p>
+
+                        </div>
+
+                        <strong class="item-amount">
+                            ₹1,250
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Expense 2 -->
+
+                    <div class="expense-item">
+
+                        <div class="item-icon orange-light">
+                            💡
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Electricity Bill
+                            </strong>
+
+                            <p>
+                                Paid by Rahul • Yesterday
+                            </p>
+
+                        </div>
+
+                        <strong class="item-amount">
+                            ₹2,800
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Expense 3 -->
+
+                    <div class="expense-item">
+
+                        <div class="item-icon blue-light">
+                            📶
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Internet
+                            </strong>
+
+                            <p>
+                                Paid by Sneha • Aug 14
+                            </p>
+
+                        </div>
+
+                        <strong class="item-amount">
+                            ₹799
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Expense 4 -->
+
+                    <div class="expense-item">
+
+                        <div class="item-icon purple-light">
+                            🧺
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Cleaning Items
+                            </strong>
+
+                            <p>
+                                Paid by Priya • Aug 13
+                            </p>
+
+                        </div>
+
+                        <strong class="item-amount">
+                            ₹450
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= UPCOMING EVENTS ================= -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Upcoming Events
+                        </h3>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <!-- Event 1 -->
+
+                    <div class="event-item">
+
+                        <div class="event-date">
+
+                            <strong>
+                                22
+                            </strong>
+
+                            <span>
+                                AUG
+                            </span>
+
+                        </div>
+
+                        <div class="event-info">
+
+                            <strong>
+                                Rahul's Birthday 🎂
+                            </strong>
+
+                            <p>
+                                Saturday
+                            </p>
+
+                            <span class="event-label">
+                                All day
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Event 2 -->
+
+                    <div class="event-item">
+
+                        <div class="event-date">
+
+                            <strong>
+                                25
+                            </strong>
+
+                            <span>
+                                AUG
+                            </span>
+
+                        </div>
+
+                        <div class="event-info">
+
+                            <strong>
+                                Roommate Meeting
+                            </strong>
+
+                            <p>
+                                Monday • 7:00 PM
+                            </p>
+
+                            <span class="event-label">
+                                At Home
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Event 3 -->
+
+                    <div class="event-item">
+
+                        <div class="event-date">
+
+                            <strong>
+                                28
+                            </strong>
+
+                            <span>
+                                AUG
+                            </span>
+
+                        </div>
+
+                        <div class="event-info">
+
+                            <strong>
+                                House Party 🎉
+                            </strong>
+
+                            <p>
+                                Thursday • 6:00 PM
+                            </p>
+
+                            <span class="event-label">
+                                At Home
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= UPCOMING TASKS ================= -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Upcoming Tasks
+                        </h3>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <!-- Task 1 -->
+
+                    <div class="task-item">
+
+                        <div class="task-icon green-light">
+                            🗑
+                        </div>
+
+                        <div class="task-info">
+
+                            <strong>
+                                Take Dustbin Out
+                            </strong>
+
+                            <p>
+                                Assigned to Ashwini
+                            </p>
+
+                        </div>
+
+                        <span class="task-date today">
+                            Today
+                        </span>
+
+                    </div>
+
+
+                    <!-- Task 2 -->
+
+                    <div class="task-item">
+
+                        <div class="task-icon blue-light">
+                            🚿
+                        </div>
+
+                        <div class="task-info">
+
+                            <strong>
+                                Washroom Cleaning
+                            </strong>
+
+                            <p>
+                                Assigned to Rahul
+                            </p>
+
+                        </div>
+
+                        <span class="task-date tomorrow">
+                            Tomorrow
+                        </span>
+
+                    </div>
+
+
+                    <!-- Task 3 -->
+
+                    <div class="task-item">
+
+                        <div class="task-icon orange-light">
+                            🧹
+                        </div>
+
+                        <div class="task-info">
+
+                            <strong>
+                                Floor Cleaning
+                            </strong>
+
+                            <p>
+                                Assigned to Sneha
+                            </p>
+
+                        </div>
+
+                        <span class="task-date">
+                            Aug 20
+                        </span>
+
+                    </div>
+
+
+                    <!-- Task 4 -->
+
+                    <div class="task-item">
+
+                        <div class="task-icon purple-light">
+                            🍳
+                        </div>
+
+                        <div class="task-info">
+
+                            <strong>
+                                Kitchen Cleaning
+                            </strong>
+
+                            <p>
+                                Assigned to Priya
+                            </p>
+
+                        </div>
+
+                        <span class="task-date">
+                            Aug 21
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= RENT & BILLS ================= -->
+
+            <section class="bill-panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Rent & Bill Reminders
+                    </h3>
+
+                    <a href="#">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="bill-grid">
+
+
+                    <!-- Rent -->
+
+                    <div class="bill-card">
+
+                        <div class="bill-top">
+
+                            <div class="bill-icon blue-light">
+                                🏠
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Monthly Rent
+                                </strong>
+
+                                <p>
+                                    Due on Aug 30
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="bill-bottom">
+
+                            <div class="progress">
+
+                                <div class="progress-bar blue-progress">
+                                </div>
+
+                            </div>
+
+                            <strong class="blue-text">
+                                ₹8,000
+                            </strong>
+
+                        </div>
+
+
+                        <span class="days blue-text">
+                            10 days left
+                        </span>
+
+                    </div>
+
+
+                    <!-- Electricity -->
+
+                    <div class="bill-card">
+
+                        <div class="bill-top">
+
+                            <div class="bill-icon orange-light">
+                                ⚡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Electricity Bill
+                                </strong>
+
+                                <p>
+                                    Due on Aug 25
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="bill-bottom">
+
+                            <div class="progress">
+
+                                <div class="progress-bar orange-progress">
+                                </div>
+
+                            </div>
+
+                            <strong class="orange-text">
+                                ₹2,450
+                            </strong>
+
+                        </div>
+
+
+                        <span class="days orange-text">
+                            5 days left
+                        </span>
+
+                    </div>
+
+
+                    <!-- Internet -->
+
+                    <div class="bill-card">
+
+                        <div class="bill-top">
+
+                            <div class="bill-icon blue-light">
+                                📶
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Internet Bill
+                                </strong>
+
+                                <p>
+                                    Due on Aug 27
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="bill-bottom">
+
+                            <div class="progress">
+
+                                <div class="progress-bar blue-progress">
+                                </div>
+
+                            </div>
+
+                            <strong class="blue-text">
+                                ₹799
+                            </strong>
+
+                        </div>
+
+
+                        <span class="days blue-text">
+                            7 days left
+                        </span>
+
+                    </div>
+
+
+                    <!-- Gas -->
+
+                    <div class="bill-card">
+
+                        <div class="bill-top">
+
+                            <div class="bill-icon green-light">
+                                🛢
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Gas Refill
+                                </strong>
+
+                                <p>
+                                    Due on Aug 29
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="bill-bottom">
+
+                            <div class="progress">
+
+                                <div class="progress-bar green-progress">
+                                </div>
+
+                            </div>
+
+                            <strong class="green-text">
+                                ₹900
+                            </strong>
+
+                        </div>
+
+
+                        <span class="days green-text">
+                            9 days left
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    // Mobile sidebar toggle can be added later
+
+    console.log("Roomies Dashboard Loaded");
+
+</script>
+
+</body>
+
+</html>

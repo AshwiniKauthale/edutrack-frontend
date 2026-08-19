@@ -1,0 +1,120 @@
+.batch-form-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 30px 36px 40px;
+}
+
+.batch-form-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.batch-form-header h1 {
+    margin: 0 0 6px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.batch-form-header p {
+    margin: 0;
+    color: #667085;
+}
+
+.batch-form-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, .04);
+}
+
+.form-section {
+    padding-bottom: 22px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.form-section h5 {
+    margin-bottom: 5px;
+    color: #101828;
+    font-weight: 700;
+}
+
+.form-section p {
+    margin: 0;
+    color: #667085;
+    font-size: 14px;
+}
+
+.batch-form-card label {
+    display: block;
+    margin-bottom: 7px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.batch-form-card input,
+.batch-form-card textarea,
+.batch-form-card select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    outline: none;
+    color: #101828;
+    background: #fff;
+    font-size: 14px;
+}
+
+.batch-form-card input {
+    height: 44px;
+}
+
+.batch-form-card textarea {
+    resize: vertical;
+}
+
+.batch-form-card input:focus,
+.batch-form-card textarea:focus,
+.batch-form-card select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+}
+
+.batch-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid #eaecf0;
+}
+
+@media (max-width: 768px) {
+
+    .batch-form-page {
+        padding: 20px 16px;
+    }
+
+    .batch-form-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .batch-form-card {
+        padding: 20px;
+    }
+
+    .batch-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .batch-form-actions button {
+        width: 100%;
+    }
+}

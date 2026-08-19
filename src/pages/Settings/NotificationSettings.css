@@ -1,0 +1,608 @@
+/* =====================================================
+   NOTIFICATION SETTINGS PAGE
+===================================================== */
+
+.notification-settings-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px 35px 50px;
+  box-sizing: border-box;
+  background: #f7f9fc;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.notification-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.notification-header-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.notification-header-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf2ff;
+  color: #2563eb;
+
+  font-size: 25px;
+}
+
+.notification-header-title h1 {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: #172033;
+}
+
+.notification-header-title p {
+  margin: 6px 0 0;
+
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.notification-back-button {
+  padding: 10px 16px;
+
+  border: 1px solid #d9dee8;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #374151;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.notification-back-button:hover {
+  background: #f1f5f9;
+  border-color: #c7ced9;
+}
+
+/* =====================================================
+   STATUS CARD
+===================================================== */
+
+.notification-status-card {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 20px 22px;
+
+  margin-bottom: 22px;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color: white;
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, 0.16);
+}
+
+.notification-status-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  font-size: 23px;
+
+  flex-shrink: 0;
+}
+
+.notification-status-content {
+  flex: 1;
+}
+
+.notification-status-content h2 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.notification-status-content p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.notification-status-badge {
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.16);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.notification-settings-container {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* =====================================================
+   SETTINGS CARD
+===================================================== */
+
+.notification-settings-card {
+  width: 100%;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e9f0;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.04);
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.notification-card-header {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 20px 23px;
+
+  background: #fbfcfe;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.notification-card-header-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eef4ff;
+
+  font-size: 19px;
+
+  flex-shrink: 0;
+}
+
+.notification-card-header h2 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #252d3d;
+}
+
+.notification-card-header p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+
+  color: #737b89;
+}
+
+/* =====================================================
+   SETTINGS LIST
+===================================================== */
+
+.notification-settings-list {
+  padding: 0 22px;
+}
+
+/* =====================================================
+   INDIVIDUAL SETTING
+===================================================== */
+
+.notification-setting-item {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 19px 2px;
+
+  border-bottom: 1px solid #edf0f4;
+
+  transition: background 0.2s ease;
+}
+
+.notification-setting-item:last-child {
+  border-bottom: none;
+}
+
+.notification-setting-item:hover {
+  background: #fafbfc;
+}
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.notification-setting-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.notification-setting-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #f5f7fa;
+
+  font-size: 18px;
+
+  flex-shrink: 0;
+}
+
+.notification-setting-info {
+  min-width: 0;
+}
+
+.notification-setting-info h3 {
+  margin: 0;
+
+  color: #252d3d;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.notification-setting-info p {
+  margin: 5px 0 0;
+
+  color: #737b89;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+.notification-toggle {
+  width: 48px;
+  height: 27px;
+
+  padding: 3px;
+
+  border: none;
+
+  border-radius: 20px;
+
+  background: #cbd2dc;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  flex-shrink: 0;
+}
+
+.notification-toggle span {
+  display: block;
+
+  width: 21px;
+  height: 21px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.2s ease;
+}
+
+.notification-toggle.active {
+  background: #2563eb;
+}
+
+.notification-toggle.active span {
+  transform: translateX(21px);
+}
+
+/* =====================================================
+   SAVE AREA
+===================================================== */
+
+.notification-save-area {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 15px;
+
+  margin-top: 22px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #e5e9f0;
+}
+
+/* =====================================================
+   SAVE BUTTON
+===================================================== */
+
+.notification-save-button {
+  border: none;
+
+  padding: 11px 22px;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.notification-save-button:hover {
+  background: #1d4ed8;
+}
+
+.notification-save-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.notification-success {
+  color: #15803d;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.notification-error {
+  color: #b91c1c;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .notification-settings-page {
+    padding: 22px 18px 35px;
+  }
+
+  .notification-settings-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .notification-back-button {
+    width: 100%;
+  }
+
+  .notification-status-card {
+    align-items: flex-start;
+  }
+
+  .notification-status-badge {
+    display: none;
+  }
+
+  .notification-settings-container {
+    max-width: 100%;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .notification-settings-page {
+    padding: 18px 14px 30px;
+  }
+
+  .notification-header-title {
+    align-items: flex-start;
+  }
+
+  .notification-header-icon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 21px;
+  }
+
+  .notification-header-title h1 {
+    font-size: 23px;
+  }
+
+  .notification-header-title p {
+    font-size: 12px;
+  }
+
+  .notification-status-card {
+    padding: 17px;
+
+    gap: 12px;
+  }
+
+  .notification-status-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 19px;
+  }
+
+  .notification-status-content h2 {
+    font-size: 15px;
+  }
+
+  .notification-status-content p {
+    font-size: 11px;
+  }
+
+  .notification-settings-card {
+    border-radius: 10px;
+  }
+
+  .notification-card-header {
+    padding: 17px;
+  }
+
+  .notification-settings-list {
+    padding: 0 15px;
+  }
+
+  .notification-setting-item {
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 16px 2px;
+  }
+
+  .notification-setting-left {
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+  .notification-setting-icon {
+    width: 35px;
+    height: 35px;
+
+    font-size: 15px;
+  }
+
+  .notification-setting-info h3 {
+    font-size: 13px;
+  }
+
+  .notification-setting-info p {
+    font-size: 11px;
+  }
+
+  .notification-toggle {
+    margin-top: 3px;
+  }
+
+  .notification-save-area {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .notification-save-button {
+    width: 100%;
+  }
+
+  .notification-success,
+  .notification-error {
+    text-align: center;
+  }
+}
