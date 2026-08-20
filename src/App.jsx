@@ -134,6 +134,22 @@ function App() {
             />
 
             {/* =================================================
+                ROOT URL
+                IMPORTANT:
+                Opening the Vercel URL will go to LOGIN
+            ================================================= */}
+
+            <Route
+                path="/"
+                element={
+                    <Navigate
+                        to="/login"
+                        replace
+                    />
+                }
+            />
+
+            {/* =================================================
                 PROTECTED APPLICATION
             ================================================= */}
 
@@ -548,18 +564,9 @@ function App() {
                 />
 
                 {/* =================================================
-                    DEFAULT ROUTES
+                    UNKNOWN ROUTES
+                    Keep protected application fallback
                 ================================================= */}
-
-                <Route
-                    path="/"
-                    element={
-                        <Navigate
-                            to="/dashboard"
-                            replace
-                        />
-                    }
-                />
 
                 <Route
                     path="*"
