@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Teachers.css";
 
-const API = "http://localhost:8080";
+const API = import.meta.env.VITE_API_URL;
 
 const Teachers = () => {
     const navigate = useNavigate();

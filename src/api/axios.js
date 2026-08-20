@@ -1,18 +1,12 @@
 import axios from "axios";
 
-// =====================================================
-// AXIOS INSTANCE
-// =====================================================
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "https://edutrack-backend-8ior.onrender.com",
+    baseURL: import.meta.env.VITE_API_URL,
     headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
     },
 });
-
-// =====================================================
-// REQUEST INTERCEPTOR
-// =====================================================
 
 api.interceptors.request.use(
     (config) => {
@@ -24,19 +18,11 @@ api.interceptors.request.use(
 
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
-    }
+    (error) => Promise.reject(error)
 );
 
-// =====================================================
-// RESPONSE INTERCEPTOR
-// =====================================================
-
 api.interceptors.response.use(
-    (response) => {
-        return response;
-    },
+    (response) => response,
     (error) => {
         console.error(
             "API ERROR:",

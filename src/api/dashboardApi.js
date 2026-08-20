@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Backend dashboard API
-const API_URL = "http://localhost:8080/dashboard";
+const API_URL = `${import.meta.env.VITE_API_URL}/dashboard`;
 
 /**
  * Get dashboard statistics

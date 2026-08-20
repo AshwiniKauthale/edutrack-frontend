@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SettingsSubPages.css";
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://edutrack-backend-8ior.onrender.com";
+
 function SecuritySettings() {
   const navigate = useNavigate();
 
@@ -41,17 +45,26 @@ function SecuritySettings() {
       !form.newPassword ||
       !form.confirmPassword
     ) {
-      setError("Please fill in all password fields.");
+      setError(
+        "Please fill in all password fields."
+      );
       return;
     }
 
-    if (form.newPassword !== form.confirmPassword) {
-      setError("New password and confirm password do not match.");
+    if (
+      form.newPassword !==
+      form.confirmPassword
+    ) {
+      setError(
+        "New password and confirm password do not match."
+      );
       return;
     }
 
     if (form.newPassword.length < 6) {
-      setError("New password must contain at least 6 characters.");
+      setError(
+        "New password must contain at least 6 characters."
+      );
       return;
     }
 
@@ -60,15 +73,19 @@ function SecuritySettings() {
 
       const token = getToken();
 
+      if (!token) {
+        throw new Error(
+          "Authentication token not found. Please login again."
+        );
+      }
+
       const response = await fetch(
-        "http://localhost:8080/api/settings/password",
+        `${API_URL}/api/settings/password`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            ...(token
-              ? { Authorization: `Bearer ${token}` }
-              : {}),
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(form),
         }
@@ -77,19 +94,32 @@ function SecuritySettings() {
       const data = await response.text();
 
       if (!response.ok) {
-        throw new Error(data || "Failed to change password");
+        throw new Error(
+          data ||
+            `Failed to change password (${response.status})`
+        );
       }
 
-      setMessage("Password changed successfully.");
+      setMessage(
+        "Password changed successfully."
+      );
 
       setForm({
         currentPassword: "",
         newPassword: "",
         confirmPassword: "",
       });
+
     } catch (error) {
-      console.error("Password change error:", error);
-      setError(error.message);
+      console.error(
+        "Password change error:",
+        error
+      );
+
+      setError(
+        error.message ||
+          "Unable to change password."
+      );
     } finally {
       setSaving(false);
     }
@@ -99,33 +129,46 @@ function SecuritySettings() {
     <div className="settings-subpage">
 
       <div className="settings-subpage-header">
+
         <div>
+
           <h1>Security</h1>
-          <p>Manage your password and account security</p>
+
+          <p>
+            Manage your password and account security
+          </p>
+
         </div>
 
         <button
+          type="button"
           className="settings-back-button"
           onClick={() => navigate("/settings")}
         >
           ← Back to Settings
         </button>
+
       </div>
 
       <div className="settings-section-card">
 
         <div className="settings-section-title">
+
           <div className="settings-section-icon">
             🔐
           </div>
 
           <div>
+
             <h2>Change Password</h2>
+
             <p>
-              Update your account password regularly to keep
-              your account secure.
+              Update your account password regularly
+              to keep your account secure.
             </p>
+
           </div>
+
         </div>
 
         <form
@@ -134,7 +177,10 @@ function SecuritySettings() {
         >
 
           <div className="settings-form-group">
-            <label>Current Password</label>
+
+            <label>
+              Current Password
+            </label>
 
             <input
               type="password"
@@ -143,10 +189,14 @@ function SecuritySettings() {
               onChange={handleChange}
               placeholder="Enter current password"
             />
+
           </div>
 
           <div className="settings-form-group">
-            <label>New Password</label>
+
+            <label>
+              New Password
+            </label>
 
             <input
               type="password"
@@ -155,10 +205,14 @@ function SecuritySettings() {
               onChange={handleChange}
               placeholder="Enter new password"
             />
+
           </div>
 
           <div className="settings-form-group">
-            <label>Confirm New Password</label>
+
+            <label>
+              Confirm New Password
+            </label>
 
             <input
               type="password"
@@ -167,6 +221,7 @@ function SecuritySettings() {
               onChange={handleChange}
               placeholder="Confirm new password"
             />
+
           </div>
 
           {error && (
@@ -198,6 +253,7 @@ function SecuritySettings() {
         </form>
 
       </div>
+
     </div>
   );
 }

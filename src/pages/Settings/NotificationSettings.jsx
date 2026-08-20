@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NotificationSettings.css";
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://edutrack-backend-8ior.onrender.com";
+
 function NotificationSettings() {
   const navigate = useNavigate();
 
@@ -16,33 +20,45 @@ function NotificationSettings() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
-  const token = localStorage.getItem("token");
-
-  // =====================================================
-  // LOAD SETTINGS
-  // =====================================================
+  const getToken = () =>
+    localStorage.getItem("token") ||
+    localStorage.getItem("jwtToken") ||
+    localStorage.getItem("accessToken");
 
   useEffect(() => {
     const loadSettings = async () => {
       try {
+        const token = getToken();
+
+        if (!token) {
+          console.error(
+            "No authentication token found."
+          );
+          return;
+        }
+
         const response = await fetch(
-          "http://localhost:8080/api/settings",
+          `${API_URL}/api/settings`,
           {
+            method: "GET",
             headers: {
+              Accept: "application/json",
               Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
             },
           }
         );
 
         if (!response.ok) {
-          return;
+          throw new Error(
+            `Failed to load settings (${response.status})`
+          );
         }
 
         const data = await response.json();
 
         setSettings((previous) => ({
           ...previous,
+
           attendanceNotifications:
             data.attendanceNotifications ??
             previous.attendanceNotifications,
@@ -58,20 +74,21 @@ function NotificationSettings() {
           systemNotifications:
             data.systemNotifications ??
             previous.systemNotifications,
+
+          emailNotifications:
+            data.emailNotifications ??
+            previous.emailNotifications,
         }));
       } catch (error) {
-        console.error("Error loading notification settings:", error);
+        console.error(
+          "Error loading notification settings:",
+          error
+        );
       }
     };
 
-    if (token) {
-      loadSettings();
-    }
-  }, [token]);
-
-  // =====================================================
-  // TOGGLE
-  // =====================================================
+    loadSettings();
+  }, []);
 
   const toggleSetting = (name) => {
     setSettings((previous) => ({
@@ -82,17 +99,21 @@ function NotificationSettings() {
     setMessage("");
   };
 
-  // =====================================================
-  // SAVE SETTINGS
-  // =====================================================
-
   const handleSave = async () => {
     setSaving(true);
     setMessage("");
 
     try {
+      const token = getToken();
+
+      if (!token) {
+        throw new Error(
+          "Authentication token not found."
+        );
+      }
+
       const response = await fetch(
-        "http://localhost:8080/api/settings",
+        `${API_URL}/api/settings`,
         {
           method: "PUT",
           headers: {
@@ -104,21 +125,27 @@ function NotificationSettings() {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to save settings");
+        throw new Error(
+          `Failed to save settings (${response.status})`
+        );
       }
 
-      setMessage("Notification preferences saved successfully.");
+      setMessage(
+        "Notification preferences saved successfully."
+      );
     } catch (error) {
-      console.error("Error saving notification settings:", error);
-      setMessage("Unable to save notification settings.");
+      console.error(
+        "Error saving notification settings:",
+        error
+      );
+
+      setMessage(
+        "Unable to save notification settings."
+      );
     } finally {
       setSaving(false);
     }
   };
-
-  // =====================================================
-  // NOTIFICATION ITEM
-  // =====================================================
 
   const NotificationItem = ({
     icon,
@@ -138,8 +165,11 @@ function NotificationSettings() {
           </div>
 
           <div className="notification-setting-info">
+
             <h3>{title}</h3>
+
             <p>{description}</p>
+
           </div>
 
         </div>
@@ -149,10 +179,12 @@ function NotificationSettings() {
           className={`notification-toggle ${
             enabled ? "active" : ""
           }`}
-          onClick={() => toggleSetting(settingName)}
+          onClick={() =>
+            toggleSetting(settingName)
+          }
           aria-label={`Toggle ${title}`}
         >
-          <span></span>
+          <span />
         </button>
 
       </div>
@@ -161,10 +193,6 @@ function NotificationSettings() {
 
   return (
     <div className="notification-settings-page">
-
-      {/* =================================================
-          HEADER
-      ================================================= */}
 
       <div className="notification-settings-header">
 
@@ -194,10 +222,6 @@ function NotificationSettings() {
 
       </div>
 
-      {/* =================================================
-          STATUS CARD
-      ================================================= */}
-
       <div className="notification-status-card">
 
         <div className="notification-status-icon">
@@ -205,12 +229,14 @@ function NotificationSettings() {
         </div>
 
         <div className="notification-status-content">
+
           <h2>Stay up to date</h2>
 
           <p>
-            Choose which activities you want to receive
-            notifications about.
+            Choose which activities you want to
+            receive notifications about.
           </p>
+
         </div>
 
         <div className="notification-status-badge">
@@ -219,15 +245,7 @@ function NotificationSettings() {
 
       </div>
 
-      {/* =================================================
-          MAIN CONTENT
-      ================================================= */}
-
       <div className="notification-settings-container">
-
-        {/* =================================================
-            IN-APP NOTIFICATIONS
-        ================================================= */}
 
         <div className="notification-settings-card">
 
@@ -281,10 +299,6 @@ function NotificationSettings() {
 
         </div>
 
-        {/* =================================================
-            EMAIL NOTIFICATIONS
-        ================================================= */}
-
         <div className="notification-settings-card">
 
           <div className="notification-card-header">
@@ -297,7 +311,8 @@ function NotificationSettings() {
               <h2>Email Notifications</h2>
 
               <p>
-                Receive important updates directly in your inbox
+                Receive important updates directly in
+                your inbox
               </p>
             </div>
 
@@ -315,10 +330,6 @@ function NotificationSettings() {
           </div>
 
         </div>
-
-        {/* =================================================
-            SAVE AREA
-        ================================================= */}
 
         <div className="notification-save-area">
 
@@ -340,7 +351,9 @@ function NotificationSettings() {
             onClick={handleSave}
             disabled={saving}
           >
-            {saving ? "Saving..." : "Save Preferences"}
+            {saving
+              ? "Saving..."
+              : "Save Preferences"}
           </button>
 
         </div>

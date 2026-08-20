@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SettingsSubPages.css";
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://edutrack-backend-8ior.onrender.com";
+
 function AppearanceSettings() {
   const navigate = useNavigate();
 
@@ -26,29 +30,42 @@ function AppearanceSettings() {
         const token = getToken();
 
         const response = await fetch(
-          "http://localhost:8080/api/settings",
+          `${API_URL}/api/settings`,
           {
+            method: "GET",
             headers: {
-              "Content-Type": "application/json",
+              Accept: "application/json",
               ...(token
-                ? { Authorization: `Bearer ${token}` }
+                ? {
+                    Authorization: `Bearer ${token}`,
+                  }
                 : {}),
             },
           }
         );
 
-        if (!response.ok) return;
+        if (!response.ok) {
+          throw new Error(
+            `Failed to load settings (${response.status})`
+          );
+        }
 
         const data = await response.json();
 
         setSettings({
           theme: data.theme || "LIGHT",
-          sidebarMode: data.sidebarMode || "EXPANDED",
-          compactMode: data.compactMode ?? false,
-          animations: data.animations ?? true,
+          sidebarMode:
+            data.sidebarMode || "EXPANDED",
+          compactMode:
+            data.compactMode ?? false,
+          animations:
+            data.animations ?? true,
         });
       } catch (error) {
-        console.error("Error loading appearance settings:", error);
+        console.error(
+          "Error loading appearance settings:",
+          error
+        );
       }
     };
 
@@ -63,13 +80,15 @@ function AppearanceSettings() {
       const token = getToken();
 
       const response = await fetch(
-        "http://localhost:8080/api/settings",
+        `${API_URL}/api/settings`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
             ...(token
-              ? { Authorization: `Bearer ${token}` }
+              ? {
+                  Authorization: `Bearer ${token}`,
+                }
               : {}),
           },
           body: JSON.stringify(settings),
@@ -77,13 +96,23 @@ function AppearanceSettings() {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to save appearance settings");
+        throw new Error(
+          `Failed to save appearance settings (${response.status})`
+        );
       }
 
-      setMessage("Appearance settings saved successfully.");
+      setMessage(
+        "Appearance settings saved successfully."
+      );
     } catch (error) {
-      console.error(error);
-      setMessage("Unable to save appearance settings.");
+      console.error(
+        "Error saving appearance settings:",
+        error
+      );
+
+      setMessage(
+        "Unable to save appearance settings."
+      );
     } finally {
       setSaving(false);
     }
@@ -93,9 +122,13 @@ function AppearanceSettings() {
     <div className="settings-subpage">
 
       <div className="settings-subpage-header">
+
         <div>
           <h1>Appearance</h1>
-          <p>Customize the appearance of EduTrack</p>
+
+          <p>
+            Customize the appearance of EduTrack
+          </p>
         </div>
 
         <button
@@ -104,24 +137,31 @@ function AppearanceSettings() {
         >
           ← Back to Settings
         </button>
+
       </div>
 
       <div className="settings-section-card">
 
         <div className="settings-section-title">
+
           <div className="settings-section-icon">
             🎨
           </div>
 
           <div>
             <h2>Appearance Preferences</h2>
-            <p>Customize how EduTrack looks and behaves.</p>
+
+            <p>
+              Customize how EduTrack looks and behaves.
+            </p>
           </div>
+
         </div>
 
         <div className="appearance-grid">
 
           <div className="appearance-field">
+
             <label>Theme</label>
 
             <select
@@ -133,13 +173,23 @@ function AppearanceSettings() {
                 })
               }
             >
-              <option value="LIGHT">Light</option>
-              <option value="DARK">Dark</option>
-              <option value="SYSTEM">System Default</option>
+              <option value="LIGHT">
+                Light
+              </option>
+
+              <option value="DARK">
+                Dark
+              </option>
+
+              <option value="SYSTEM">
+                System Default
+              </option>
             </select>
+
           </div>
 
           <div className="appearance-field">
+
             <label>Sidebar Mode</label>
 
             <select
@@ -151,69 +201,95 @@ function AppearanceSettings() {
                 })
               }
             >
-              <option value="EXPANDED">Expanded</option>
-              <option value="COLLAPSED">Collapsed</option>
+              <option value="EXPANDED">
+                Expanded
+              </option>
+
+              <option value="COLLAPSED">
+                Collapsed
+              </option>
             </select>
+
           </div>
 
         </div>
 
         <div className="settings-option">
+
           <div className="settings-option-left">
+
             <div className="settings-option-icon">
               📦
             </div>
 
             <div>
               <h3>Compact Mode</h3>
+
               <p>
-                Use a more compact layout to display more content.
+                Use a more compact layout to display
+                more content.
               </p>
             </div>
+
           </div>
 
           <button
+            type="button"
             className={`settings-toggle ${
-              settings.compactMode ? "active" : ""
+              settings.compactMode
+                ? "active"
+                : ""
             }`}
             onClick={() =>
               setSettings({
                 ...settings,
-                compactMode: !settings.compactMode,
+                compactMode:
+                  !settings.compactMode,
               })
             }
           >
             <span />
           </button>
+
         </div>
 
         <div className="settings-option">
+
           <div className="settings-option-left">
+
             <div className="settings-option-icon">
               ✨
             </div>
 
             <div>
               <h3>Animations</h3>
+
               <p>
-                Enable smooth animations throughout the application.
+                Enable smooth animations throughout
+                the application.
               </p>
             </div>
+
           </div>
 
           <button
+            type="button"
             className={`settings-toggle ${
-              settings.animations ? "active" : ""
+              settings.animations
+                ? "active"
+                : ""
             }`}
             onClick={() =>
               setSettings({
                 ...settings,
-                animations: !settings.animations,
+                animations:
+                  !settings.animations,
               })
             }
           >
             <span />
           </button>
+
         </div>
 
         <div className="settings-save-area">
@@ -225,11 +301,14 @@ function AppearanceSettings() {
           )}
 
           <button
+            type="button"
             className="settings-save-button"
             onClick={handleSave}
             disabled={saving}
           >
-            {saving ? "Saving..." : "Save Changes"}
+            {saving
+              ? "Saving..."
+              : "Save Changes"}
           </button>
 
         </div>

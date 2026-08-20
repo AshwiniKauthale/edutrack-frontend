@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SettingsSubPages.css";
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://edutrack-backend-8ior.onrender.com";
+
 function ActivityHistory() {
   const navigate = useNavigate();
 
@@ -19,26 +23,35 @@ function ActivityHistory() {
         const token = getToken();
 
         const response = await fetch(
-          "http://localhost:8080/api/settings/activity",
+          `${API_URL}/api/settings/activity`,
           {
+            method: "GET",
             headers: {
-              "Content-Type": "application/json",
+              Accept: "application/json",
               ...(token
-                ? { Authorization: `Bearer ${token}` }
+                ? {
+                    Authorization: `Bearer ${token}`,
+                  }
                 : {}),
             },
           }
         );
 
         if (!response.ok) {
-          throw new Error("Failed to load activity history");
+          throw new Error(
+            `Failed to load activity history (${response.status})`
+          );
         }
 
         const data = await response.json();
 
         setActivities(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error loading activity history:", error);
+        console.error(
+          "Error loading activity history:",
+          error
+        );
+        setActivities([]);
       } finally {
         setLoading(false);
       }
@@ -48,7 +61,9 @@ function ActivityHistory() {
   }, []);
 
   const formatDate = (timestamp) => {
-    if (!timestamp) return "Unknown time";
+    if (!timestamp) {
+      return "Unknown time";
+    }
 
     try {
       return new Date(timestamp).toLocaleString();
