@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getBatches } from "../../api/BatchApi";
-import { getStudentsByBatch } from "../../api/StudentApi";
-import { markAttendance } from "../../api/AttendanceApi";
+import { getBatches } from "../../api/batchApi";
+import { getStudentsByBatch } from "../../api/studentApi";
+import { markAttendance } from "../../api/attendanceApi";
 
 import "./MarkAttendance.css";
 
