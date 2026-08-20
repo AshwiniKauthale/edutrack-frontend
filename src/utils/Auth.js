@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth";
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://edutrack-backend-8ior.onrender.com";
 
 // =====================================================
 // LOGIN
@@ -9,10 +11,10 @@ const API_URL = "http://localhost:8080/api/auth";
 export const login = async (usernameOrEmail, password) => {
 
     const response = await axios.post(
-        `${API_URL}/login`,
+        `${API_URL}/api/auth/login`,
         {
-            usernameOrEmail: usernameOrEmail,
-            password: password
+            usernameOrEmail,
+            password
         },
         {
             headers: {
@@ -23,11 +25,6 @@ export const login = async (usernameOrEmail, password) => {
     );
 
     const data = response.data;
-
-
-    // =================================================
-    // SAVE AUTHENTICATION DATA
-    // =================================================
 
     if (data.token) {
         localStorage.setItem("token", data.token);
@@ -52,7 +49,6 @@ export const login = async (usernameOrEmail, password) => {
     return data;
 };
 
-
 // =====================================================
 // REGISTER
 // =====================================================
@@ -60,7 +56,7 @@ export const login = async (usernameOrEmail, password) => {
 export const register = async (registerData) => {
 
     const response = await axios.post(
-        `${API_URL}/register`,
+        `${API_URL}/api/auth/register`,
         registerData,
         {
             headers: {
@@ -73,7 +69,6 @@ export const register = async (registerData) => {
     return response.data;
 };
 
-
 // =====================================================
 // TOKEN
 // =====================================================
@@ -82,17 +77,13 @@ export const getToken = () => {
     return localStorage.getItem("token");
 };
 
-
 // =====================================================
 // AUTHENTICATION CHECK
 // =====================================================
 
 export const isAuthenticated = () => {
-    const token = localStorage.getItem("token");
-
-    return !!token;
+    return !!localStorage.getItem("token");
 };
-
 
 // =====================================================
 // USERNAME
@@ -102,7 +93,6 @@ export const getUsername = () => {
     return localStorage.getItem("username");
 };
 
-
 // =====================================================
 // FULL NAME
 // =====================================================
@@ -110,7 +100,6 @@ export const getUsername = () => {
 export const getFullName = () => {
     return localStorage.getItem("fullName");
 };
-
 
 // =====================================================
 // EMAIL
@@ -120,7 +109,6 @@ export const getEmail = () => {
     return localStorage.getItem("email");
 };
 
-
 // =====================================================
 // ROLE
 // =====================================================
@@ -128,7 +116,6 @@ export const getEmail = () => {
 export const getRole = () => {
     return localStorage.getItem("role");
 };
-
 
 // =====================================================
 // AUTH HEADERS
@@ -146,7 +133,6 @@ export const getAuthHeaders = () => {
         "Accept": "application/json"
     };
 };
-
 
 // =====================================================
 // LOGOUT
