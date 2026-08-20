@@ -3,9 +3,8 @@ import axios from "axios";
 // =====================================================
 // AXIOS INSTANCE
 // =====================================================
-
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: import.meta.env.VITE_API_URL || "https://edutrack-backend-8ior.onrender.com",
     headers: {
         "Content-Type": "application/json",
     },
