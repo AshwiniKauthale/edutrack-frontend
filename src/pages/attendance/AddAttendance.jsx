@@ -6,12 +6,12 @@ import { getAuthHeaders } from "../../utils/Auth";
 // =====================================================
 // API URLS
 // =====================================================
+const API_URL = import.meta.env.VITE_API_URL;
 
-const STUDENT_API = "http://localhost:8080/students";
-const BATCH_API = "http://localhost:8080/batches";
-const CLASSROOM_API = "http://localhost:8080/classrooms";
-const ATTENDANCE_API = "http://localhost:8080/attendance";
-
+const STUDENT_API = `${API_URL}/students`;
+const BATCH_API = `${API_URL}/batches`;
+const CLASSROOM_API = `${API_URL}/classrooms`;
+const ATTENDANCE_API = `${API_URL}/attendance`;
 // =====================================================
 // COMPONENT
 // =====================================================

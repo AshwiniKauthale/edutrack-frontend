@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SettingsSubPages.css";
 
-const API_URL = "http://localhost:8080";
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://edutrack-backend-8ior.onrender.com";
 
 function OrganizationSettings() {
     const navigate = useNavigate();
